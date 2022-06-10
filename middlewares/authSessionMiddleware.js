@@ -10,7 +10,7 @@ async function authSessionMiddleware(req, res, next) {
     const result = await authRepository.searchSession(token);
 
     if (result.rowCount === 0) {
-        return res.sendStatus(201);
+        return res.sendStatus(401);
       }
 
     const { id } = result.rows[0];

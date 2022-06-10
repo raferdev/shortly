@@ -5,9 +5,11 @@ async function getUrlController(req, res) {
     
   try {
     const result = await urlsRepository.getIdShortLink(id);
+
     if (result.rowCount === 0) {
         return res.sendStatus(404);
       }
+      
     let shortLink =  {
       id:result.rows[0].id,
       shortUrl:result.rows[0].shortLink,
