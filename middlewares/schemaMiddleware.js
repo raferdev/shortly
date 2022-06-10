@@ -1,10 +1,10 @@
 import joi from "joi";
 
 function schemaMiddleware(req, res, next) {
-    console.log(req.route.path)
   const body = req.body;
+  const path = req.route.path;
 
-  if (req.route.path === "/signup") {
+  if (path === "/signup") {
     const signInSchema = joi.object({
       name: joi.string().required(),
       email: joi.string().email().required(),
@@ -18,10 +18,9 @@ function schemaMiddleware(req, res, next) {
       return res.status(422).send(validation.error.details);
     }
 
-    next();
+    return next();
   }
-  if (req.route.path === "/signin") {
-
+  if (path === "/signin") {
     const signInSchema = joi.object({
       name: joi.string().required(),
       email: joi.string().email().required(),
@@ -33,10 +32,9 @@ function schemaMiddleware(req, res, next) {
     if (validation.error) {
       return res.status(422).send(validation.error.details);
     }
-    next();
+    return next();
   }
-  if (req.route.path === "/urls/shorten") {
-
+  if (path === "/urls/shorten") {
     const signInSchema = joi.object({
       url: joi.string().uri().required(),
     });
@@ -47,9 +45,9 @@ function schemaMiddleware(req, res, next) {
       return res.status(422).send(validation.error.details);
     }
 
-    next();
+    return next();
   }
-  return res.sendStatus(404)
+  return res.sendStatus(422);
 }
 
 export default schemaMiddleware;
