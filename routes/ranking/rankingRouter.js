@@ -4,6 +4,6 @@ import schemaMiddleware from "../../middlewares/schemaMiddleware.js";
 
 const rankingRouter = express.Router();
 
-rankingRouter.get("/ranking", schemaMiddleware,getRankingController);
+rankingRouter.get("/ranking",getRankingController);
 
 export default rankingRouter;
