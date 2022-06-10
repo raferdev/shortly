@@ -1,8 +1,10 @@
 import urlsRepository from "../../../rafael_modules/urls/index.js";
 
 async function deleteUrlController(req, res) {
+  
   const { id } = req.params;
   const reqId = req.userId
+  
   try {
     const resultShortLink = await urlsRepository.getIdShortLink(id);
 
@@ -10,7 +12,8 @@ async function deleteUrlController(req, res) {
       return res.sendStatus(404);
     }
 
-    const idLink = resultShortLink.rows[0].id;
+    const idLink = resultShortLink.rows[0].userId;
+    
     if (reqId !== idLink) {
       return res.sendStatus(401);
     }

@@ -10,6 +10,6 @@ const urlsRouter = express.Router();
 urlsRouter.post("/urls/shorten", authSessionMiddleware, postShortenController);
 urlsRouter.get("/urls/:id", getUrlController);
 urlsRouter.get("/urls/open/:shortUrl", getOpenUrlController);
-urlsRouter.delete("urls/:id", authSessionMiddleware, deleteUrlController);
+urlsRouter.delete("/urls/:id", authSessionMiddleware, deleteUrlController);
 
 export default urlsRouter;

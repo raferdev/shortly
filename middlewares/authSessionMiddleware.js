@@ -13,10 +13,9 @@ async function authSessionMiddleware(req, res, next) {
         return res.sendStatus(401);
       }
 
-    const { id } = result.rows[0];
+      const { userId } = result.rows[0];
 
-    req.userId = id;
-
+    req.userId = userId;
   } catch (error) {
 
     console.log(error);
