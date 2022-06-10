@@ -6,7 +6,6 @@ async function authSessionMiddleware(req, res, next) {
     const token = authorization?.replace("Bearer", "").trim();
 
   try {
-
     const result = await authRepository.searchSession(token);
 
     if (result.rowCount === 0) {
